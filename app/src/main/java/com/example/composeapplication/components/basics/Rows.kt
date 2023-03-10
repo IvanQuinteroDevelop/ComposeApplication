@@ -1,4 +1,4 @@
-package com.example.composeapplication
+package com.example.composeapplication.components.basics
 
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Row
