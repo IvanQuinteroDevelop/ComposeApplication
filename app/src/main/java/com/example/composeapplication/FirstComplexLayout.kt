@@ -20,6 +20,7 @@ fun MyComplexLayout() {
                 .background(Color.Cyan), contentAlignment = Alignment.Center) {
             Text(text = "Hola desde el cuadro Cyan")
         }
+        HeightSpacer(size = 30)
         Row(
             Modifier
                 .fillMaxWidth()
@@ -30,6 +31,7 @@ fun MyComplexLayout() {
                 .background(Color.Blue), contentAlignment = Alignment.Center) {
                 Text(text = "Hola desde el cuadro azul")
             }
+            WidthSpacer(size = 30)
             Box(modifier = Modifier
                 .fillMaxHeight()
                 .weight(1f)
@@ -37,6 +39,7 @@ fun MyComplexLayout() {
                 Text(text = "Hola desde el cuadro rojo")
             }
         }
+        HeightSpacer(size = 30)
         Box(
             Modifier
                 .fillMaxWidth()
