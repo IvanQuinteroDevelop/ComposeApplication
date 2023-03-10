@@ -22,6 +22,7 @@ class MainActivity : ComponentActivity() {
                     MyBoxes()
                     MyColumn()
                     MyRow()
+                    MyComplexLayout()
                 }
             }
         }
