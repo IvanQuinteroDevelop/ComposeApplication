@@ -1,4 +1,4 @@
-package com.example.composeapplication
+package com.example.composeapplication.components.basics
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -11,6 +11,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.composeapplication.components.basics.MyColumn
+import com.example.composeapplication.components.basics.MySuperText
 
 @Preview(
     name = "Boxes",
