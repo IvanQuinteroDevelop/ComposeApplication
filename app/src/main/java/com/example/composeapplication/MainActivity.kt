@@ -12,6 +12,7 @@ import com.example.composeapplication.components.basics.MyColumn
 import com.example.composeapplication.components.basics.MyRow
 import com.example.composeapplication.components.layouts.ConstraintLayoutExample1
 import com.example.composeapplication.components.layouts.MyComplexLayout
+import com.example.composeapplication.components.states.MyStateExample
 import com.example.composeapplication.ui.theme.ComposeApplicationTheme
 
 class MainActivity : ComponentActivity() {
@@ -32,6 +33,7 @@ class MainActivity : ComponentActivity() {
                     MyRow()
                     MyComplexLayout()
                     ConstraintLayoutExample1()
+                    MyStateExample()
                 }
             }
         }
