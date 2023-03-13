@@ -9,9 +9,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.constraintlayout.compose.ChainStyle
 import androidx.constraintlayout.compose.ConstraintLayout
 
-@Preview("constraint", showSystemUi = true)
+@Preview(showSystemUi = true)
 @Composable
 fun ConstraintLayoutExample1 () {
     ConstraintLayout(modifier = Modifier.fillMaxSize()) {
@@ -52,9 +53,101 @@ fun ConstraintLayoutExample1 () {
                 start.linkTo(boxRed.end)
             })
 
-        Box(modifier = Modifier.size(125.dp).background(Color.Yellow).constrainAs(boxYellow){
-            top.linkTo(boxRed.bottom)
-            end.linkTo(boxRed.start)
-        })
+        Box(modifier = Modifier
+            .size(125.dp)
+            .background(Color.Yellow)
+            .constrainAs(boxYellow) {
+                top.linkTo(boxRed.bottom)
+                end.linkTo(boxRed.start)
+            })
+    }
+}
+
+@Preview( showSystemUi = true)
+@Composable
+fun ConstraintExampleGuide() {
+    ConstraintLayout(Modifier.fillMaxSize()) {
+        val boxRed = createRef()
+        val topGuide = createGuidelineFromTop(0.1f)
+        val startGuide = createGuidelineFromStart(0.25f)
+
+        Box(modifier = Modifier
+            .size(125.dp)
+            .background(Color.Red)
+            .constrainAs(boxRed) {
+                top.linkTo(topGuide)
+                start.linkTo(startGuide)
+            })
+
+    }
+}
+
+@Preview( showSystemUi = true)
+@Composable
+fun ConstraintBarrier() {
+    ConstraintLayout(Modifier.fillMaxSize()) {
+        val (boxRed, boxGreen, boxYellow) = createRefs()
+        val barrier = createEndBarrier(boxRed, boxGreen)
+
+        Box(
+            Modifier
+                .size(125.dp)
+                .background(Color.Green)
+                .constrainAs(boxGreen) {
+                    start.linkTo(parent.start, margin = 16.dp)
+                })
+
+        Box(
+            Modifier
+                .size(235.dp)
+                .background(Color.Red)
+                .constrainAs(boxRed) {
+                    top.linkTo(boxGreen.bottom)
+                    start.linkTo(parent.start, margin = 32.dp)
+                })
+
+        Box(
+            Modifier
+                .size(50.dp)
+                .background(Color.Yellow)
+                .constrainAs(boxYellow) {
+                    start.linkTo(barrier)
+                })
+    }
+}
+
+@Preview( showSystemUi = true)
+@Composable
+fun ConstraintChainExample() {
+    ConstraintLayout(Modifier.fillMaxSize()) {
+        val (boxRed, boxGreen, boxYellow) = createRefs()
+
+        Box(
+            Modifier
+                .size(75.dp)
+                .background(Color.Green)
+                .constrainAs(boxGreen) {
+                    start.linkTo(parent.start)
+                    end.linkTo(boxRed.start)
+                })
+
+        Box(
+            Modifier
+                .size(75.dp)
+                .background(Color.Red)
+                .constrainAs(boxRed) {
+                    end.linkTo(boxYellow.end)
+                    start.linkTo(boxGreen.end)
+                })
+
+        Box(
+            Modifier
+                .size(75.dp)
+                .background(Color.Yellow)
+                .constrainAs(boxYellow) {
+                    start.linkTo(boxRed.end)
+                    end.linkTo(parent.end)
+                })
+        createHorizontalChain(boxRed, boxGreen, boxYellow, chainStyle = ChainStyle.SpreadInside)
     }
 }
