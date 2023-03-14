@@ -6,10 +6,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
+import androidx.compose.material.TextFieldDefaults
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
@@ -33,7 +35,7 @@ fun MyAdvancedTextField() {
     }
     TextField(value = mText, onValueChange = {
         mText = it
-    }, label = {Text(text = "Introduce tu nombre") }, isError = !mText.contains("@"))
+    }, label = { Text(text = "Introduce tu nombre") }, isError = !mText.contains("@"))
 }
 
 @Preview(showSystemUi = true)
@@ -45,11 +47,21 @@ fun MyOutLinedTextField() {
     ConstraintLayout(
         Modifier
             .fillMaxSize()
-            .padding(16.dp)) {
-        Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+            .padding(16.dp)
+    ) {
+        Box(
+            Modifier
+                .fillMaxSize()
+                .padding(24.dp), contentAlignment = Alignment.Center
+        ) {
             OutlinedTextField(value = mText, onValueChange = {
                 mText = it
-            })
+            }, label = { Text(text = "Introduce tu email") },
+                isError = !mText.contains("@"), colors = TextFieldDefaults.outlinedTextFieldColors(
+                    focusedBorderColor = Color.Cyan,
+                    unfocusedBorderColor = Color.Green
+                )
+            )
         }
     }
 }
