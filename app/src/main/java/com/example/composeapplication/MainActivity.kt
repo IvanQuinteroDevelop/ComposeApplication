@@ -7,9 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
-import com.example.composeapplication.components.basics.MyBoxes
-import com.example.composeapplication.components.basics.MyColumn
-import com.example.composeapplication.components.basics.MyRow
+import com.example.composeapplication.components.basics.*
 import com.example.composeapplication.components.layouts.ConstraintLayoutExample1
 import com.example.composeapplication.components.layouts.MyComplexLayout
 import com.example.composeapplication.components.states.MyStateExample
@@ -28,12 +26,16 @@ class MainActivity : ComponentActivity() {
                     /* comment all the ones below except
                     the one you want to see when running the app */
 
-                    MyBoxes()
-                    MyColumn()
-                    MyRow()
-                    MyComplexLayout()
-                    ConstraintLayoutExample1()
-                    MyStateExample()
+                        MyBoxes()
+                        MyColumn()
+                        MyRow()
+                        MyComplexLayout()
+                        ConstraintLayoutExample1()
+                        MyStateExample()
+                        Greeting(name = "Ivan")
+                        MyTextField()
+                        MyAdvancedTextField()
+                        MyOutLinedTextField()
                 }
             }
         }
