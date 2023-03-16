@@ -44,6 +44,7 @@ class MainActivity : ComponentActivity() {
                         MyOutLinedTextField(name = mText) {
                             mText = it
                         }
+                        MyButtonExample()
                 }
             }
         }
