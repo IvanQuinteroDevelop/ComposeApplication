@@ -6,6 +6,10 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import com.example.composeapplication.components.basics.*
 import com.example.composeapplication.components.layouts.ConstraintLayoutExample1
@@ -25,7 +29,9 @@ class MainActivity : ComponentActivity() {
                 ) {
                     /* comment all the ones below except
                     the one you want to see when running the app */
-
+                    var mText by remember {
+                        mutableStateOf("Ivancho")
+                    }
                         MyBoxes()
                         MyColumn()
                         MyRow()
@@ -35,7 +41,9 @@ class MainActivity : ComponentActivity() {
                         Greeting(name = "Ivan")
                         MyTextField()
                         MyAdvancedTextField()
-                        MyOutLinedTextField()
+                        MyOutLinedTextField(name = mText) {
+                            mText = it
+                        }
                 }
             }
         }
