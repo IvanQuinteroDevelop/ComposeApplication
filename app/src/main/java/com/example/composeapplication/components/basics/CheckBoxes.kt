@@ -10,6 +10,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.state.ToggleableState
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.composeapplication.ui.CheckInfo
@@ -50,7 +51,26 @@ fun MyCheckBoxWithTextCompleted(checkInfo: CheckInfo) {
 
     Row {
         Checkbox(checked = checkInfo.selected, onCheckedChange = {checkInfo.onCheckedChange(!checkInfo.selected)})
-        WidthSpacer(size = 4)
+        WidthSpacer(size = 2)
         Text(text = checkInfo.title, Modifier.align(Alignment.CenterVertically))
+    }
+}
+
+@Composable
+fun MyTriStateCheckBox() {
+    var status by rememberSaveable {
+        mutableStateOf(ToggleableState.Off)
+    }
+    Row {
+        
+    TriStateCheckbox(state = status, onClick = {
+        status = when(status) {
+            ToggleableState.On -> ToggleableState.Off
+            ToggleableState.Off -> ToggleableState.Indeterminate
+            ToggleableState.Indeterminate -> ToggleableState.On
+        }
+    })
+        WidthSpacer(size = 2)
+        Text(text = "TrisStateCheckbox", Modifier.align(Alignment.CenterVertically))
     }
 }
