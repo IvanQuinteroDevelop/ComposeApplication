@@ -2,6 +2,7 @@ package com.example.composeapplication.components.basics
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
@@ -14,6 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.constraintlayout.compose.ConstraintLayout
 import com.example.composeapplication.R
 
 @Preview
@@ -27,16 +29,23 @@ fun MyImage() {
     )
 }
 
-@Preview
+@Preview(showSystemUi = true)
 @Composable
 fun MyImageAdvance() {
-    Image(
-        painter = painterResource(id = R.drawable.ic_launcher_foreground),
-        contentDescription = "Example 2",
-        modifier = Modifier
-            .clip(CircleShape)
-            .border(5.dp, Color.LightGray, CircleShape)
-    )
+    ConstraintLayout(Modifier.fillMaxSize()) {
+        val mainImage = createRef()
+        Image(
+            painter = painterResource(id = R.drawable.ic_launcher_foreground),
+            contentDescription = "Example 2",
+            modifier = Modifier
+                .clip(CircleShape)
+                .border(5.dp, Color.LightGray, CircleShape)
+                .constrainAs(mainImage) {
+                    start.linkTo(parent.start)
+                    end.linkTo(parent.end)
+                }
+        )
+    }
 }
 
 @Preview

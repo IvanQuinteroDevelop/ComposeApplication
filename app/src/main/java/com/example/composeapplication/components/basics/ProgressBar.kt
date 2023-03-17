@@ -39,7 +39,7 @@ fun MyProgress() {
         }
 
         Button(onClick = { showLoading = !showLoading }) {
-            Text(text = "Cargar datos")
+            Text(text = if (showLoading) "Stop" else "Load profile")
         }
     }
 }

@@ -3,18 +3,17 @@ package com.example.composeapplication
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import com.example.composeapplication.components.basics.*
-import com.example.composeapplication.components.layouts.ConstraintLayoutExample1
-import com.example.composeapplication.components.layouts.MyComplexLayout
-import com.example.composeapplication.components.states.MyStateExample
+import com.example.composeapplication.ui.CheckInfo
 import com.example.composeapplication.ui.theme.ComposeApplicationTheme
 
 class MainActivity : ComponentActivity() {
@@ -27,26 +26,43 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    /* comment all the ones below except
-                    the one you want to see when running the app */
-                    var mText by remember {
-                        mutableStateOf("Ivancho")
-                    }
-                        MyBoxes()
-                        MyColumn()
-                        MyRow()
-                        MyComplexLayout()
-                        ConstraintLayoutExample1()
-                        MyStateExample()
-                        Greeting(name = "Ivan")
-                        MyTextField()
-                        MyAdvancedTextField()
+                    Column(
+                        Modifier
+                            .fillMaxSize()
+                            .verticalScroll(rememberScrollState())) {
+
+                        MyImageAdvance()
+                        var mText by remember {
+                            mutableStateOf("Navi")
+                        }
                         MyOutLinedTextField(name = mText) {
                             mText = it
                         }
+                        MyAdvancedTextField()
+                        val myOptionsList = getOptions(titles = listOf("option 1", "option 2", "option 3"))
+                        myOptionsList.forEach {
+                            MyCheckBoxWithTextCompleted(checkInfo = it)
+                        }
+                        MySwitch()
+                        Greeting(name = mText)
                         MyButtonExample()
+                        MyProgress()
+                        MyProgressAdvance()
+                    }
                 }
             }
+        }
+    }
+
+    @Composable
+    fun getOptions(titles: List<String>): List<CheckInfo> {
+        return titles.map {
+            var status by rememberSaveable { mutableStateOf(false) }
+            CheckInfo(
+                title = it,
+                selected = status,
+                onCheckedChange = { newStatus -> status = newStatus }
+            )
         }
     }
 }
