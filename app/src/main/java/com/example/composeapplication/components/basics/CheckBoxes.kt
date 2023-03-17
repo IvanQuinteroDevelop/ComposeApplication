@@ -7,6 +7,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
@@ -38,8 +39,8 @@ fun MyCheckBoxWithText() {
 
     Row {
         Checkbox(checked = myState, onCheckedChange = {myState = !myState})
-        Spacer(modifier = Modifier.width(8.dp))
-        Text(text = "Example 1")
+        Spacer(modifier = Modifier.width(4.dp))
+        Text(text = "Example 1", Modifier.align(Alignment.CenterVertically))
     }
 }
 
@@ -49,7 +50,7 @@ fun MyCheckBoxWithTextCompleted(checkInfo: CheckInfo) {
 
     Row {
         Checkbox(checked = checkInfo.selected, onCheckedChange = {checkInfo.onCheckedChange(!checkInfo.selected)})
-        Spacer(modifier = Modifier.width(8.dp))
-        Text(text = checkInfo.title)
+        WidthSpacer(size = 4)
+        Text(text = checkInfo.title, Modifier.align(Alignment.CenterVertically))
     }
 }

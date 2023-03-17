@@ -1,6 +1,7 @@
 package com.example.composeapplication.components.basics
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
@@ -33,11 +34,11 @@ fun MyAdvancedTextField() {
     }
     Box(
         Modifier
-            .padding(24.dp), contentAlignment = Alignment.Center
+            .padding(8.dp).fillMaxWidth(), contentAlignment = Alignment.Center
     ) {
         TextField(value = mText, onValueChange = {
             mText = it
-        }, label = { Text(text = "Introduce your name") }, isError = !mText.contains("@"))
+        },label = { Text(text = "Introduce your name") })
     }
 }
 
@@ -45,11 +46,11 @@ fun MyAdvancedTextField() {
 fun MyOutLinedTextField(name:String, onValueChanged: (String) -> Unit) {
     ConstraintLayout(
         Modifier
-            .padding(16.dp)
+            .padding(8.dp)
     ) {
         Box(
             Modifier
-                .padding(24.dp), contentAlignment = Alignment.Center
+                .padding(8.dp).fillMaxWidth(), contentAlignment = Alignment.Center
         ) {
             OutlinedTextField(value = name, onValueChange = {
                 onValueChanged(it)

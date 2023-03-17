@@ -32,7 +32,7 @@ class MainActivity : ComponentActivity() {
                             .verticalScroll(rememberScrollState())) {
 
                         MyImageAdvance()
-                        var mText by remember {
+                        var mText by rememberSaveable {
                             mutableStateOf("Navi")
                         }
                         MyOutLinedTextField(name = mText) {
