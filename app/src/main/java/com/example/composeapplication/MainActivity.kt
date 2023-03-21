@@ -4,7 +4,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
@@ -41,9 +43,17 @@ class MainActivity : ComponentActivity() {
                         MyAdvancedTextField()
                         val myOptionsList = getOptions(titles = listOf("option 1", "option 2", "option 3"))
                         MyTriStateCheckBox()
+                        var name by rememberSaveable {
+                            mutableStateOf("Ivan")
+                        }
                         myOptionsList.forEach {
                             MyCheckBoxWithTextCompleted(checkInfo = it)
                         }
+                        MyRadioButtonList(name = name, onSelected = {
+                            name = it
+                        })
+
+                        MyRadioButton()
                         MySwitch()
                         Greeting(name = mText)
                         MyButtonExample()
