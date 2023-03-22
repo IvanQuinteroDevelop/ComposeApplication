@@ -50,6 +50,9 @@ class MainActivity : ComponentActivity() {
                         MyDropDownMenu()
                         MyDivider()
                         MyAdvancedTextField()
+                        MyProgressAdvance()
+                        MyAdvanceSlider()
+                        MyRangeSlider()
                         val myOptionsList = getOptions(titles = listOf("option 1", "option 2", "option 3"))
                         MyTriStateCheckBox()
                         var name by rememberSaveable {
@@ -67,7 +70,6 @@ class MainActivity : ComponentActivity() {
                         Greeting(name = mText)
                         MyButtonExample()
                         MyProgress()
-                        MyProgressAdvance()
                     }
                 }
             }
