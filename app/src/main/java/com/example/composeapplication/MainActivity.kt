@@ -36,7 +36,11 @@ class MainActivity : ComponentActivity() {
                         var mText by rememberSaveable {
                             mutableStateOf("Navi")
                         }
-                        Card(Modifier.align(Alignment.CenterHorizontally).padding(8.dp), elevation = 8.dp) {
+                        MyBadgeBox()
+                        Card(
+                            Modifier
+                                .align(Alignment.CenterHorizontally)
+                                .padding(8.dp), elevation = 8.dp) {
                                 MyImageAdvance()
                         }
 
