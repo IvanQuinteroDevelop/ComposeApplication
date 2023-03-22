@@ -12,7 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
-@Preview(showSystemUi = true)
+@Preview
 @Composable
 fun MyBadgeBox() {
     BadgedBox(badge = {
