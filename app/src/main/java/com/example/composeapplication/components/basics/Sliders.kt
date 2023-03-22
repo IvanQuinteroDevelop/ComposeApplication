@@ -55,9 +55,9 @@ fun MyRangeSlider() {
             }
             RangeSlider(values = currentRange, onValueChange = { currentRange = it }, steps = 9)
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
-                Text(text = "Start value ${currentRange.start}", fontSize = 12.sp)
+                Text(text = "Start value ${currentRange.start}", fontSize = 14.sp)
                 WidthSpacer(size = 12)
-                Text(text = "Finish Value ${currentRange.endInclusive}", fontSize = 12.sp)
+                Text(text = "Finish Value ${currentRange.endInclusive}", fontSize = 14.sp)
             }
         }
     }

@@ -1,9 +1,7 @@
 package com.example.composeapplication.components.basics
 
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -21,10 +19,11 @@ fun MyButtonExample() {
     var enable by rememberSaveable {
         mutableStateOf(true)
     }
-    Column(
+    Row(
         Modifier
             .fillMaxSize()
-            .padding(16.dp)
+            .padding(8.dp),
+        Arrangement.SpaceBetween
     ) {
         Button(
             onClick = { enable = false },

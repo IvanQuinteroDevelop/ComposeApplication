@@ -1,14 +1,13 @@
 package com.example.composeapplication
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Card
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
+import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
@@ -32,7 +31,8 @@ class MainActivity : ComponentActivity() {
                         Modifier
                             .fillMaxSize()
                             .padding(8.dp)
-                            .verticalScroll(rememberScrollState())) {
+                            .verticalScroll(rememberScrollState())
+                    ) {
                         var mText by rememberSaveable {
                             mutableStateOf("Navi")
                         }
@@ -40,8 +40,9 @@ class MainActivity : ComponentActivity() {
                         Card(
                             Modifier
                                 .align(Alignment.CenterHorizontally)
-                                .padding(8.dp), elevation = 8.dp) {
-                                MyImageAdvance()
+                                .padding(8.dp), elevation = 8.dp
+                        ) {
+                            MyImageAdvance()
                         }
 
                         MyOutLinedTextField(name = mText) {
@@ -53,23 +54,52 @@ class MainActivity : ComponentActivity() {
                         MyProgressAdvance()
                         MyAdvanceSlider()
                         MyRangeSlider()
-                        val myOptionsList = getOptions(titles = listOf("option 1", "option 2", "option 3"))
+                        val myOptionsList =
+                            getOptions(titles = listOf("option 1", "option 2", "option 3", "Option 4"))
                         MyTriStateCheckBox()
                         var name by rememberSaveable {
                             mutableStateOf("Ivan")
                         }
-                        myOptionsList.forEach {
-                            MyCheckBoxWithTextCompleted(checkInfo = it)
+                        Row(
+                            Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceAround
+                        ) {
+                            Box {
+                                Column {
+                                    myOptionsList.forEach {
+                                        MyCheckBoxWithTextCompleted(checkInfo = it)
+                                    }
+                                }
+                            }
+                            MyRadioButtonList(name = name, onSelected = {
+                                name = it
+                            })
                         }
-                        MyRadioButtonList(name = name, onSelected = {
-                            name = it
-                        })
 
-                        MyRadioButton()
-                        MySwitch()
+                        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceAround) {
+                            MyRadioButton()
+                            MySwitch()
+                        }
                         Greeting(name = mText)
                         MyButtonExample()
                         MyProgress()
+                        var showDialog by rememberSaveable {
+                            mutableStateOf(false)
+                        }
+                        Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+                            Button(onClick = {
+                                showDialog = true
+                            }) {
+                                Text(text = "Show Dialog")
+                            }
+                            MyDialog(show = showDialog,
+                                onDismiss = {
+                                    showDialog = false
+                                }, onConfirm = {
+                                    showDialog = false
+                                    Log.i("Dialog", "Confirm button pressed")
+                                })
+                        }
                     }
                 }
             }

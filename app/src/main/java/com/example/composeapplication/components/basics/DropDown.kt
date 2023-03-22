@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun MyDropDownMenu() {
     var selectedText by rememberSaveable {
-        mutableStateOf("")
+        mutableStateOf("Select option")
     }
     var expanded by rememberSaveable {
         mutableStateOf(false)
@@ -31,7 +31,8 @@ fun MyDropDownMenu() {
     Column(Modifier.padding(20.dp)) {
         OutlinedTextField(value = selectedText, onValueChange = { selectedText = it },
             enabled = false,
-            readOnly = true, shape = CircleShape,
+            readOnly = true,
+            shape = CircleShape,
             modifier = Modifier
                 .clickable { expanded = true }
                 .fillMaxWidth())

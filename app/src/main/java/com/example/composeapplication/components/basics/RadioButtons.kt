@@ -23,21 +23,21 @@ fun MyRadioButton() {
     var status by rememberSaveable {
         mutableStateOf(false)
     }
-    Row(Modifier.fillMaxWidth()) {
+    Row {
         
     RadioButton(selected = status, onClick = {status = !status }, colors = RadioButtonDefaults.colors(
         unselectedColor = Color.Red,
         selectedColor = Color.Green,
         disabledColor = Color.DarkGray
     ))
-        Text(text = "Option 1", Modifier.align(Alignment.CenterVertically))
+        Text(text = "RadioButton color", Modifier.align(Alignment.CenterVertically))
     }
 }
 
 @Composable
 fun MyRadioButtonList(name: String, onSelected:(String) -> Unit) {
 
-    Column(Modifier.fillMaxSize()) {
+    Column() {
         Row {
            RadioButton(selected = name == "Ivan" , onClick = {onSelected("Ivan")})
             Text(text = "Ivan", Modifier.align(Alignment.CenterVertically))
