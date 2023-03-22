@@ -47,6 +47,7 @@ class MainActivity : ComponentActivity() {
                         MyOutLinedTextField(name = mText) {
                             mText = it
                         }
+                        MyDropDownMenu()
                         MyDivider()
                         MyAdvancedTextField()
                         val myOptionsList = getOptions(titles = listOf("option 1", "option 2", "option 3"))
