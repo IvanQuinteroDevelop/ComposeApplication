@@ -1,9 +1,7 @@
 package com.example.composeapplication.components.basics
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -15,7 +13,7 @@ import androidx.compose.ui.unit.dp
 @Preview(name = "Columns", showSystemUi = true)
 @Composable
 fun MyColumn() {
-    Column() {
+    Column(Modifier.fillMaxSize(), verticalArrangement = Arrangement.SpaceAround) {
         Text("user 1",
             Modifier
                 .background(Color.Magenta)

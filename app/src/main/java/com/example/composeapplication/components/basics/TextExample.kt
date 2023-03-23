@@ -18,14 +18,14 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun Greeting(name: String) {
     Column(Modifier.fillMaxSize()) {
-        Text(text = "Hello $name!", color = Color.Blue)
+        Text(text = "Hello $name!", color = Color.Blue, fontSize = 24.sp)
         Text(text = "Hello $name!", fontWeight = FontWeight.ExtraBold)
-        Text(text = "Hello $name!", style = TextStyle(fontFamily = FontFamily.Cursive))
-        Text(text = "Hello $name!", style = TextStyle(textDecoration = TextDecoration.LineThrough))
-        Text(text = "Hello $name!", style = TextStyle(textDecoration = TextDecoration.Underline))
+        Text(text = "Hello $name!", style = TextStyle(fontFamily = FontFamily.Cursive, fontSize = 24.sp))
+        Text(text = "Hello $name!", style = TextStyle(textDecoration = TextDecoration.LineThrough, fontSize = 24.sp))
+        Text(text = "Hello $name!", style = TextStyle(textDecoration = TextDecoration.Underline, fontSize = 24.sp))
         Text(text = "Hello $name!", style = TextStyle(textDecoration = TextDecoration.combine(
             listOf(TextDecoration.Underline, TextDecoration.LineThrough)
-        )))
+        ), fontSize = 24.sp))
     }
 }
 

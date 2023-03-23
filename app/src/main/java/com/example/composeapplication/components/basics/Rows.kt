@@ -18,13 +18,13 @@ fun MyRow() {
     Row(
         Modifier
             .horizontalScroll(rememberScrollState())) {
-        Text(text = "Ejemplo1", Modifier.width(80.dp), fontSize = 16.sp)
-        Text(text = "Ejemplo2", Modifier.width(80.dp), fontSize = 16.sp)
-        Text(text = "Ejemplo3", Modifier.width(80.dp), fontSize = 16.sp)
-        Text(text = "Ejemplo4", Modifier.width(80.dp), fontSize = 16.sp)
-        Text(text = "Ejemplo1", Modifier.width(80.dp), fontSize = 16.sp)
-        Text(text = "Ejemplo2", Modifier.width(80.dp), fontSize = 16.sp)
-        Text(text = "Ejemplo3", Modifier.width(80.dp), fontSize = 16.sp)
-        Text(text = "Ejemplo4", Modifier.width(80.dp), fontSize = 16.sp)
+        Text(text = "Example 1", Modifier.width(80.dp), fontSize = 16.sp)
+        Text(text = "Example 2", Modifier.width(80.dp), fontSize = 16.sp)
+        Text(text = "Example 3", Modifier.width(80.dp), fontSize = 16.sp)
+        Text(text = "Example 4", Modifier.width(80.dp), fontSize = 16.sp)
+        Text(text = "Example 1", Modifier.width(80.dp), fontSize = 16.sp)
+        Text(text = "Example 2", Modifier.width(80.dp), fontSize = 16.sp)
+        Text(text = "Example 3", Modifier.width(80.dp), fontSize = 16.sp)
+        Text(text = "Example 4", Modifier.width(80.dp), fontSize = 16.sp)
     }
 }
