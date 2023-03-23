@@ -12,5 +12,5 @@ import androidx.compose.ui.unit.dp
 @Preview
 @Composable
 fun MyDivider() {
-    Divider(Modifier.fillMaxWidth().padding(top = 16.dp), color = Color.Green)
+    Divider(Modifier.fillMaxWidth().padding(top = 16.dp), color = Color.LightGray)
 }

@@ -68,11 +68,11 @@ fun MyProgressAdvance() {
         ) {
             Button(onClick = {
                 if (progressValue >= 0.1f) progressValue -= 0.1f
-            }) { Text(text = "Reducir") }
+            }) { Text(text = "Reducer") }
             Button(onClick = {
                 if (progressValue <= 1f) progressValue += 0.1f
             }) {
-                Text(text = "Incrementar")
+                Text(text = "Incremental")
             }
         }
     }
