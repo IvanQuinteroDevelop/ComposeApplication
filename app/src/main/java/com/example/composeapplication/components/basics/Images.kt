@@ -36,7 +36,7 @@ fun MyImageAdvance() {
     ConstraintLayout(Modifier.padding(8.dp)) {
         val mainImage = createRef()
         Image(
-            painter = painterResource(id = R.drawable.ic_launcher_foreground),
+            painter = painterResource(id = R.drawable.profile),
             contentDescription = "Example 2",
             modifier = Modifier
                 .clip(CircleShape)

@@ -85,11 +85,19 @@ fun AddComponents() {
         var showCustomDialog by rememberSaveable {
             mutableStateOf(false)
         }
-        Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+        var showConfirmDialog by rememberSaveable {
+            mutableStateOf(false)
+        }
+        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceAround) {
             Button(onClick = {
                 showDialog = true
             }) {
                 Text(text = "Dialog")
+            }
+            Button(onClick = {
+                showSimpleCustomDialog = true
+            }) {
+                Text(text = "SimpleCustomDialog")
             }
             MyAlertDialog(show = showDialog,
                 onDismiss = {
@@ -100,15 +108,16 @@ fun AddComponents() {
                 })
         }
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceAround) {
-            Button(onClick = {
-                showSimpleCustomDialog = true
-            }) {
-                Text(text = "SimpleCustomDialog")
-            }
+
             Button(onClick = {
                 showCustomDialog = true
             }) {
                 Text(text = "CustomDialog")
+            }
+            Button(onClick = {
+                showConfirmDialog = true
+            }) {
+                Text(text = "ConfirmDialog")
             }
         }
 
@@ -118,6 +127,11 @@ fun AddComponents() {
         MyCustomDialog(show = showCustomDialog, onDismiss = {
             showCustomDialog = false
         })
+        Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+            MyConfirmationDialog(show = showConfirmDialog, onDismiss = {
+                showConfirmDialog = false
+            })
+        }
     }
 }
 

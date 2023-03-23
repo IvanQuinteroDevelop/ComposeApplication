@@ -49,9 +49,5 @@ w
 G.idea/sonarlint/issuestore/9/0/904fce7dfea14437ce152602dd593103be32d121,5/f/5f120fc264c0d4a2d1bf67217e335a0a04b9bf60
 P
  app/src/main/AndroidManifest.xml,8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e
-€
-Papp/src/main/java/com/example/composeapplication/components/basics/BadgeBoxes.kt,6/1/612bf861b6ce4e56d164547071367f1bf035a210
 p
 @app/src/main/java/com/example/composeapplication/ui/CheckInfo.kt,b/8/b81db6937211bb1cbb308fab380c36b82a167ff5
-{
-Kapp/src/main/java/com/example/composeapplication/components/basics/Cards.kt,4/4/44dca519aa01fb7f08177326dc6e9bff152f56cc
