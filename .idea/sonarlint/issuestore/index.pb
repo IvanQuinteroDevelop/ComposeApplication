@@ -25,8 +25,6 @@ w
 G.idea/sonarlint/issuestore/f/4/f4a01d6a4fcb971362ec00a83903fd3902f52164,3/1/31073cf3a12b082ef2fe0f9403916a4db3811c89
 €
 Papp/src/main/java/com/example/composeapplication/components/basics/TextFields.kt,b/8/b8131be6de379fbe9babe592cbf9b73344d4eb3d
-|
-Lapp/src/main/java/com/example/composeapplication/components/basics/Images.kt,0/3/03079f6a44db3dc60abfee1460a7787c93b054b3
 €
 Papp/src/main/java/com/example/composeapplication/components/basics/CheckBoxes.kt,2/d/2d64d2af255bfa515aea7d66722bfee0b00791e3
 „

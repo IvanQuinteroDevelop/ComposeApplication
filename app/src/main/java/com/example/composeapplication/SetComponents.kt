@@ -79,6 +79,9 @@ fun AddComponents() {
         var showDialog by rememberSaveable {
             mutableStateOf(false)
         }
+        var showSimpleCustomDialog by rememberSaveable {
+            mutableStateOf(false)
+        }
         var showCustomDialog by rememberSaveable {
             mutableStateOf(false)
         }
@@ -86,7 +89,7 @@ fun AddComponents() {
             Button(onClick = {
                 showDialog = true
             }) {
-                Text(text = "Show Dialog")
+                Text(text = "Dialog")
             }
             MyAlertDialog(show = showDialog,
                 onDismiss = {
@@ -96,12 +99,23 @@ fun AddComponents() {
                     Log.i("Dialog", "Confirm button pressed")
                 })
         }
-        Button(onClick = {
-            showCustomDialog = true
-        }) {
-            Text(text = "Show SimpleCustomDialog")
+        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceAround) {
+            Button(onClick = {
+                showSimpleCustomDialog = true
+            }) {
+                Text(text = "SimpleCustomDialog")
+            }
+            Button(onClick = {
+                showCustomDialog = true
+            }) {
+                Text(text = "CustomDialog")
+            }
         }
-        MySimpleCustomDialog(show = showCustomDialog, onDismiss = {
+
+        MySimpleCustomDialog(show = showSimpleCustomDialog, onDismiss = {
+            showSimpleCustomDialog = false
+        })
+        MyCustomDialog(show = showCustomDialog, onDismiss = {
             showCustomDialog = false
         })
     }
