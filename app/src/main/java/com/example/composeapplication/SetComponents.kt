@@ -133,7 +133,6 @@ fun AddComponents() {
                 showConfirmDialog = false
             })
         }
-        SimpleRecyclerView()
     }
 }
 

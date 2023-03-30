@@ -8,7 +8,7 @@ import androidx.compose.ui.tooling.preview.Preview
 
 @Preview(showSystemUi = true)
 @Composable
-fun SimpleRecyclerView () {
+fun SimpleRecyclerView() {
     val myList = listOf("Navi", "Aris", "Pepe", "Ivan")
     LazyColumn{
         item { Text(text = "First item") }
@@ -16,10 +16,10 @@ fun SimpleRecyclerView () {
         item { Text(text = "Third item") }
         item { Text(text = "Fourth item") }
         items(7) {
-            Text(text = "This is the item number ${it+1}")
+            Text(text = "This is the item number ${it + 1}")
         }
         items(myList) {
-            Text(text = "Hola me llamo $it")
+            Text(text = "Hello my name is $it")
         }
     }
 }
