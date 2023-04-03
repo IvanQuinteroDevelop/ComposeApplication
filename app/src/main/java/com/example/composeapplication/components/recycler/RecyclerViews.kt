@@ -7,6 +7,9 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Card
 import androidx.compose.material.Text
@@ -48,16 +51,31 @@ fun SuperHeroView() {
     LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
         items(getSuperHero()) { superHero ->
             ItemHero(superHero = superHero) {
-                Toast.makeText(context, it.superHeroName, Toast.LENGTH_LONG).show()
+                Toast.makeText(context, it.superHeroName, Toast.LENGTH_SHORT).show()
             }
         }
     }
 }
 
+@Preview(showSystemUi = true)
+@Composable
+fun SuperHeroGridView() {
+    val context = LocalContext.current
+    LazyVerticalGrid(columns = GridCells.Fixed(3)) {
+        items(getSuperHero()) { superHero ->
+            ItemHero(superHero = superHero) {
+                Toast.makeText(context, superHero.superHeroName, Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+}
+
+
 @Composable
 fun ItemHero(superHero: SuperHero, onItemSelected: (SuperHero) -> Unit) {
     Card(border = BorderStroke(2.dp, Color.Red), modifier = Modifier
-        .width(200.dp).clickable { onItemSelected(superHero) }) {
+        .width(200.dp)
+        .clickable { onItemSelected(superHero) }.padding(8.dp)) {
         Column() {
             Image(
                 painter = painterResource(id = superHero.photo),
@@ -69,19 +87,30 @@ fun ItemHero(superHero: SuperHero, onItemSelected: (SuperHero) -> Unit) {
                 text = superHero.superHeroName,
                 modifier = Modifier.align(Alignment.CenterHorizontally)
             )
-            Text(text = superHero.realName, fontSize = 12.sp,
-                modifier = Modifier.align(Alignment.CenterHorizontally))
-            Text(text = superHero.publisher,
+            Text(
+                text = superHero.realName, fontSize = 12.sp,
+                modifier = Modifier.align(Alignment.CenterHorizontally)
+            )
+            Text(
+                text = superHero.publisher,
                 fontSize = 10.sp,
                 modifier = Modifier
                     .align(Alignment.End)
-                    .padding(6.dp))
+                    .padding(6.dp)
+            )
         }
     }
 }
 
 fun getSuperHero(): List<SuperHero> {
     return listOf(
+        SuperHero("Spiderman", "Petter Parker", "Marvel", R.drawable.spiderman),
+        SuperHero("Wolverine", "James Howlett", "Marvel", R.drawable.logan),
+        SuperHero("Batman", "Bruce Wayne", "DC", R.drawable.batman),
+        SuperHero("Thor", "Thor Odison", "Marvel", R.drawable.thor),
+        SuperHero("Flash", "Jay Garrick", "DC", R.drawable.flash),
+        SuperHero("Green Lantern", "Alan Scott", "DC", R.drawable.green_lantern),
+        SuperHero("Wonder Woman", "Princess Diana", "DC", R.drawable.wonder_woman),
         SuperHero("Spiderman", "Petter Parker", "Marvel", R.drawable.spiderman),
         SuperHero("Wolverine", "James Howlett", "Marvel", R.drawable.logan),
         SuperHero("Batman", "Bruce Wayne", "DC", R.drawable.batman),
