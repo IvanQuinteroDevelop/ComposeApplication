@@ -11,9 +11,11 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material.Button
 import androidx.compose.material.Card
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -25,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.composeapplication.R
 import com.example.composeapplication.model.SuperHero
+import kotlinx.coroutines.launch
 
 @Preview(showSystemUi = true)
 @Composable
@@ -59,6 +62,43 @@ fun SuperHeroView() {
 
 @Preview(showSystemUi = true)
 @Composable
+fun SuperHeroSpecialControlView() {
+    val context = LocalContext.current
+    val rvState = rememberLazyListState()
+    val coroutineScope = rememberCoroutineScope()
+    Column(modifier = Modifier.fillMaxWidth()) {
+        LazyColumn(
+            state = rvState,
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+            modifier = Modifier.weight(1f)
+        ) {
+            items(getSuperHero()) { superHero ->
+                ItemHero(superHero = superHero) {
+                    Toast.makeText(context, it.superHeroName, Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+        val showButton by remember {
+            derivedStateOf { rvState.firstVisibleItemIndex > 0 }
+        }
+        if (showButton) {
+            Button(
+                onClick = {
+                    coroutineScope.launch {
+                        rvState.animateScrollToItem(0)
+                    }
+                }, modifier = Modifier
+                    .padding(16.dp)
+                    .align(Alignment.CenterHorizontally)
+            ) {
+                Text(text = "Back to top")
+            }
+        }
+    }
+}
+
+@Preview(showSystemUi = true)
+@Composable
 fun SuperHeroGridView() {
     val context = LocalContext.current
     LazyVerticalGrid(columns = GridCells.Fixed(3)) {
@@ -75,7 +115,8 @@ fun SuperHeroGridView() {
 fun ItemHero(superHero: SuperHero, onItemSelected: (SuperHero) -> Unit) {
     Card(border = BorderStroke(2.dp, Color.Red), modifier = Modifier
         .width(200.dp)
-        .clickable { onItemSelected(superHero) }.padding(8.dp)) {
+        .clickable { onItemSelected(superHero) }
+        .padding(8.dp)) {
         Column() {
             Image(
                 painter = painterResource(id = superHero.photo),
