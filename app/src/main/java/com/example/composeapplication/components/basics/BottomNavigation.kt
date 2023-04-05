@@ -5,7 +5,6 @@ import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.runtime.*
@@ -21,14 +20,9 @@ fun MyBottomNavigation() {
                 contentDescription = "home"
             )
         }, label = { Text(text = "Home") })
-        BottomNavigationItem(selected = index == 1, onClick = {index = 1}, icon = {
-            Icon(
-                imageVector = Icons.Default.Favorite,
-                contentDescription = "favorite"
-            )
-        }, label = { Text(text = "Fav") })
 
-        BottomNavigationItem(selected = index == 2, onClick = { index = 2}, icon = {
+
+        BottomNavigationItem(selected = index == 1, onClick = { index = 1}, icon = {
             Icon(
                 imageVector = Icons.Default.Person,
                 contentDescription = "profile"

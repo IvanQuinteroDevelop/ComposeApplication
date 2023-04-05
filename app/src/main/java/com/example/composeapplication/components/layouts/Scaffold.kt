@@ -5,6 +5,7 @@ import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.composeapplication.components.basics.MyBottomNavigation
+import com.example.composeapplication.components.basics.MyFAB
 import com.example.composeapplication.components.basics.MyTopAppBar
 import kotlinx.coroutines.launch
 
@@ -15,11 +16,18 @@ fun ScaffoldExample() {
     val scaffoldState = rememberScaffoldState()
     val coroutineScope = rememberCoroutineScope()
 
-    Scaffold(topBar = {
-        MyTopAppBar {
-            coroutineScope.launch {
-                scaffoldState.snackbarHostState.showSnackbar("you pressed the $it")
+    Scaffold(
+        topBar = {
+            MyTopAppBar {
+                coroutineScope.launch {
+                    scaffoldState.snackbarHostState.showSnackbar("you pressed the $it")
+                }
             }
-        }
-    }, scaffoldState = scaffoldState, bottomBar = { MyBottomNavigation() }) {}
+        },
+        scaffoldState = scaffoldState,
+        bottomBar = { MyBottomNavigation() },
+        floatingActionButton = { MyFAB() },
+        floatingActionButtonPosition = FabPosition.Center,
+        isFloatingActionButtonDocked = true
+    ) {}
 }
