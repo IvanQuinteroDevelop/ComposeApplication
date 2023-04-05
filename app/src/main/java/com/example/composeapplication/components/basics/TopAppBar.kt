@@ -5,15 +5,15 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun MyTopAppBar(onClickIcon: (String) -> Unit) {
+fun MyTopAppBar(onClickIcon: (String) -> Unit, onClickDrawer:() -> Unit) {
     TopAppBar(
         title = {
             Text(text = "My first toolbar")
@@ -23,8 +23,8 @@ fun MyTopAppBar(onClickIcon: (String) -> Unit) {
         elevation = 4.dp,
         navigationIcon = {
             IconButton(
-                onClick = { onClickIcon("Back") }) {
-                Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = "Back")
+                onClick = { onClickDrawer() }) {
+                Icon(imageVector = Icons.Filled.Menu, contentDescription = "Menu")
             }
         }, actions = {
             IconButton(onClick = { onClickIcon("Search") }) {
