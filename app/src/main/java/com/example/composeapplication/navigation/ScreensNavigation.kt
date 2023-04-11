@@ -39,12 +39,27 @@ fun Screen2(navController: NavHostController) {
 }
 
 @Composable
-fun Screen3() {
+fun Screen3(navController: NavHostController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(Color.Magenta)
     ) {
-        Text(text = "Screen 3", modifier = Modifier.align(Alignment.Center))
+        Text(
+            text = "Screen 3",
+            modifier = Modifier
+                .align(Alignment.Center)
+                .clickable { navController.navigate("${Routes.FourthScreen.route}/Ivan Quintero") })
+    }
+}
+
+@Composable
+fun Screen4(navController: NavHostController, name: String) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.Yellow)
+    ) {
+        Text(text = name, modifier = Modifier.align(Alignment.Center))
     }
 }

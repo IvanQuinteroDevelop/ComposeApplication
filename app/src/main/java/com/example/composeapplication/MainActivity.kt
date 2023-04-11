@@ -14,6 +14,7 @@ import com.example.composeapplication.model.Routes
 import com.example.composeapplication.navigation.Screen1
 import com.example.composeapplication.navigation.Screen2
 import com.example.composeapplication.navigation.Screen3
+import com.example.composeapplication.navigation.Screen4
 import com.example.composeapplication.ui.theme.ComposeApplicationTheme
 
 class MainActivity : ComponentActivity() {
@@ -30,7 +31,10 @@ class MainActivity : ComponentActivity() {
                     NavHost(navController = navigationController, startDestination = Routes.FirstScreen.route) {
                         composable(Routes.FirstScreen.route) { Screen1(navigationController) }
                         composable(Routes.SecondScreen.route) { Screen2(navigationController) }
-                        composable(Routes.ThirdScreen.route) { Screen3() }
+                        composable(Routes.ThirdScreen.route) { Screen3(navigationController) }
+                        composable("${Routes.FourthScreen.route}/{name}") { backStackEntry ->
+                            Screen4(navigationController, backStackEntry.arguments?.getString("name").orEmpty())
+                        }
                     }
                     //AddComponents()
                 }
