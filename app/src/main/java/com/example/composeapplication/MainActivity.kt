@@ -7,9 +7,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.composeapplication.model.Routes
 import com.example.composeapplication.navigation.Screen1
 import com.example.composeapplication.navigation.Screen2
@@ -32,8 +34,10 @@ class MainActivity : ComponentActivity() {
                         composable(Routes.FirstScreen.route) { Screen1(navigationController) }
                         composable(Routes.SecondScreen.route) { Screen2(navigationController) }
                         composable(Routes.ThirdScreen.route) { Screen3(navigationController) }
-                        composable("${Routes.FourthScreen.route}/{name}") { backStackEntry ->
-                            Screen4(navigationController, backStackEntry.arguments?.getString("name").orEmpty())
+                        composable("${Routes.FourthScreen.route}/{age}", arguments = listOf(
+                            navArgument("age") { type = NavType.IntType }
+                        )) { backStackEntry ->
+                            Screen4(navigationController, backStackEntry.arguments?.getInt("age") ?: 0)
                         }
                     }
                     //AddComponents()

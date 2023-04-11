@@ -49,17 +49,17 @@ fun Screen3(navController: NavHostController) {
             text = "Screen 3",
             modifier = Modifier
                 .align(Alignment.Center)
-                .clickable { navController.navigate("${Routes.FourthScreen.route}/Ivan Quintero") })
+                .clickable { navController.navigate(Routes.FourthScreen.createRoute(7)) })
     }
 }
 
 @Composable
-fun Screen4(navController: NavHostController, name: String) {
+fun Screen4(navController: NavHostController, age: Int) {
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(Color.Yellow)
     ) {
-        Text(text = name, modifier = Modifier.align(Alignment.Center))
+        Text(text = "i am $age years old", modifier = Modifier.align(Alignment.Center))
     }
 }
