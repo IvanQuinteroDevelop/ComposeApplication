@@ -16,7 +16,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.composeapplication.components.basics.*
-import com.example.composeapplication.components.recycler.SimpleRecyclerView
 import com.example.composeapplication.ui.CheckInfo
 
 @Composable

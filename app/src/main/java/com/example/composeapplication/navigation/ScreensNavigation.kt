@@ -13,19 +13,6 @@ import androidx.navigation.NavHostController
 import com.example.composeapplication.model.Routes
 
 @Composable
-fun Screen1(navController: NavHostController) {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.Cyan)
-    ) {
-        Text(text = "Screen 1", modifier = Modifier
-            .align(Alignment.Center)
-            .clickable { navController.navigate(Routes.SecondScreen.route) })
-    }
-}
-
-@Composable
 fun Screen2(navController: NavHostController) {
     Box(
         modifier = Modifier
@@ -60,9 +47,11 @@ fun Screen4(navController: NavHostController, age: Int) {
             .fillMaxSize()
             .background(Color.Yellow)
     ) {
-        Text(text = "i am $age years old", modifier = Modifier.align(Alignment.Center).clickable {
-            navController.navigate(Routes.FifthScreen.createRoute("Ivancho"))
-        })
+        Text(text = "i am $age years old", modifier = Modifier
+            .align(Alignment.Center)
+            .clickable {
+                navController.navigate(Routes.FifthScreen.createRoute("Ivancho"))
+            })
     }
 }
 

@@ -3,7 +3,8 @@ package com.example.composeapplication.components.layouts
 import android.annotation.SuppressLint
 import androidx.compose.material.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
+import com.example.composeapplication.AddComponents
 import com.example.composeapplication.components.basics.MyBottomNavigation
 import com.example.composeapplication.components.basics.MyDrawer
 import com.example.composeapplication.components.basics.MyFAB
@@ -11,9 +12,8 @@ import com.example.composeapplication.components.basics.MyTopAppBar
 import kotlinx.coroutines.launch
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
-@Preview(showSystemUi = true)
 @Composable
-fun ScaffoldExample() {
+fun ScaffoldExample(navigationController: NavHostController) {
     val scaffoldState = rememberScaffoldState()
     val coroutineScope = rememberCoroutineScope()
 
@@ -31,10 +31,12 @@ fun ScaffoldExample() {
         },
         scaffoldState = scaffoldState,
         bottomBar = { MyBottomNavigation() },
-        floatingActionButton = { MyFAB() },
+        floatingActionButton = { MyFAB(navigationController) },
         floatingActionButtonPosition = FabPosition.Center,
         isFloatingActionButtonDocked = true,
         drawerGesturesEnabled = false,
         drawerContent = { MyDrawer() { coroutineScope.launch { scaffoldState.drawerState.close() }} }
-    ) {}
+    ) {
+        AddComponents()
+    }
 }

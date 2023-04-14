@@ -12,6 +12,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.composeapplication.components.layouts.ScaffoldExample
 import com.example.composeapplication.model.Routes
 import com.example.composeapplication.navigation.*
 import com.example.composeapplication.ui.theme.ComposeApplicationTheme
@@ -26,12 +27,12 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    val navigationController = rememberNavController()
+                   val navigationController = rememberNavController()
                     NavHost(
                         navController = navigationController,
                         startDestination = Routes.FirstScreen.route
                     ) {
-                        composable(Routes.FirstScreen.route) { Screen1(navigationController) }
+                        composable(Routes.FirstScreen.route) { ScaffoldExample(navigationController) }
                         composable(Routes.SecondScreen.route) { Screen2(navigationController) }
                         composable(Routes.ThirdScreen.route) { Screen3(navigationController) }
                         composable("${Routes.FourthScreen.route}/{age}", arguments = listOf(
@@ -52,7 +53,6 @@ class MainActivity : ComponentActivity() {
                             )
                         }
                     }
-                    //AddComponents()
                 }
             }
         }
