@@ -1,10 +1,12 @@
 package com.example.composeapplication.animations
 
 import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -27,7 +29,7 @@ fun ColorAnimationSimple() {
     val currentColor by animateColorAsState(
         targetValue = if (firstColor) Color.Red else Color.Yellow,
         animationSpec = tween(durationMillis = 2000),
-        finishedListener = {showBox = !showBox}
+        finishedListener = { showBox = !showBox }
     )
     if (showBox) {
         Box(
@@ -36,4 +38,31 @@ fun ColorAnimationSimple() {
                 .background(currentColor)
                 .clickable { firstColor = !firstColor })
     }
+}
+
+@Preview
+@Composable
+fun SizeAnimation() {
+    var smallSize by rememberSaveable {
+        mutableStateOf(true)
+    }
+    var showText by rememberSaveable {
+        mutableStateOf(true)
+    }
+    val size by animateDpAsState(
+        targetValue = if (smallSize) 80.dp else 120.dp,
+        animationSpec = tween(durationMillis = 500),
+        finishedListener = { showText = false }
+    )
+    Box(
+        Modifier
+            .size(size)
+            .padding(8.dp)
+            .background(Color.Cyan)
+            .clickable { smallSize = !smallSize }) {
+        if (!showText) {
+            Text(text = "Hello world")
+        }
+    }
+
 }
