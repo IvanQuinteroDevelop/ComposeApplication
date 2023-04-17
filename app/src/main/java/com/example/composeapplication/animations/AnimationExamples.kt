@@ -1,17 +1,22 @@
 package com.example.composeapplication.animations
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
@@ -64,5 +69,29 @@ fun SizeAnimation() {
             Text(text = "Hello world")
         }
     }
+}
 
+@Preview
+@Composable
+fun VisibilityAnimation() {
+    var isVisible by rememberSaveable {
+        mutableStateOf(true)
+    }
+    Column(Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
+        Button(onClick = { isVisible = !isVisible }) {
+            Text(text = "Show/Hide")
+        }
+        Spacer(modifier = Modifier.size(16.dp))
+        AnimatedVisibility(
+            isVisible,
+            enter = slideInHorizontally(),
+            exit = slideOutHorizontally()
+        ) {
+            Box(
+                Modifier
+                    .size(150.dp)
+                    .background(Color.Red)
+            )
+        }
+    }
 }
